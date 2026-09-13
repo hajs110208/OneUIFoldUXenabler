@@ -43,26 +43,18 @@ jobs:
         RELEASE_SIGNING_PASSWORD: android
         RELEASE_SIGNING_KEY_ALIAS: androiddebugkey
         RELEASE_SIGNING_KEY_PASSWORD: android
-    - name: Verify APK Build
-      run: |
-        if [ ! -f "app/build/outputs/apk/debug/app-debug-unsigned.apk" ]; then
-        echo "APK build failed - file not found"
-        find app/build -name "*.apk" -o -name "*.log" 2>/dev/null || true
-        exit 1
-        fi
-        ls -lh app/build/outputs/apk/debug/app-debug-unsigned.apk
     - name: Copy APK to Debug Folder and Push
       run: |
         mkdir -p debug
-        cp app/build/outputs/apk/debug/app-debug-unsigned.apk debug/OneUISpoof-debug.apk
+        cp app/build/outputs/apk/debug/*.apk debug/app-debug.apk
         git config --global user.name "github-actions[bot]"
         git config --global user.email "github-actions[bot]@users.noreply.github.com"
-        git add debug/OneUISpoof-debug.apk
+        git add *
         git commit -m "Automated build: Update debug artifact [skip ci]" || echo "No changes to commit"
-        git push origin main --force 
+        git push origin testing --force 
 
     - name: Upload Finished Artifact
       uses: actions/upload-artifact@v4
       with:
         name: lsposed-module-debug
-        path: debug/OneUISpoof-debug.apk
+        path: debug/*.apk
