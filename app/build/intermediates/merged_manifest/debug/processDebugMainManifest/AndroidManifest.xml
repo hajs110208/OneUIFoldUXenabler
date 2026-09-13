@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.hajs.OneUIFoldUXenabler"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="35"
+        android:targetSdkVersion="36" />
+
+    <application
+        package="com.hajs.OneUIFoldUXenabler"
+        android:allowBackup="false"
+        android:debuggable="true"
+        android:extractNativeLibs="false"
+        android:icon="@drawable/ic_hehe"
+        android:label="OneUI taskbar enabler" >
+        <meta-data
+            android:name="xposedmodule"
+            android:value="true" />
+        <meta-data
+            android:name="xposeddescription"
+            android:value="taskbar for any devices(home screen kinda breaks)" />
+        <meta-data
+            android:name="xposedminversion"
+            android:value="82" />
+        <meta-data
+            android:name="xposedscope"
+            android:value="com.sec.android.app.launcher;com.android.settings;com.android.systemui" />
+    </application>
+
+</manifest>

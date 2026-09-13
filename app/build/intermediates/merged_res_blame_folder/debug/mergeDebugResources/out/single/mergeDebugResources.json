@@ -1,0 +1,14 @@
+[
+    {
+        "merged": "com.hajs.OneUIFoldUXenabler.app-debug-4:/drawable_hehejuiceback.webp.flat",
+        "source": "com.hajs.OneUIFoldUXenabler.app-main-6:/drawable/hehejuiceback.webp"
+    },
+    {
+        "merged": "com.hajs.OneUIFoldUXenabler.app-debug-4:/drawable_ic_hehe.xml.flat",
+        "source": "com.hajs.OneUIFoldUXenabler.app-main-6:/drawable/ic_hehe.xml"
+    },
+    {
+        "merged": "com.hajs.OneUIFoldUXenabler.app-debug-4:/drawable_hehejuicefront.webp.flat",
+        "source": "com.hajs.OneUIFoldUXenabler.app-main-6:/drawable/hehejuicefront.webp"
+    }
+]
