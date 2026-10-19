@@ -16,8 +16,7 @@ class Spoofer : IXposedHookLoadPackage {
             val propHookString = object : XC_MethodHook() {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
-                    if (key == "ro.product.device") param.result = "q7q"
-                    if (key == "ro.build.characteristics") param.result = "phone"
+                    if (key == "ro.boot.other.locked") param.result = "0"
                 }
             }
             XposedHelpers.findAndHookMethod(systemPropertiesClass, "get", String::class.java, propHookString)
@@ -52,8 +51,7 @@ class Spoofer : IXposedHookLoadPackage {
             val semPropHookString = object : XC_MethodHook() {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
-                    if (key == "ro.product.device") param.result = "q7q"
-                    if (key == "ro.build.characteristics") param.result = "phone"
+                    if (key == "ro.boot.other.locked") param.result = "0"
                 }
             }
             XposedHelpers.findAndHookMethod(semSystemPropertiesClass, "get", String::class.java, semPropHookString)
