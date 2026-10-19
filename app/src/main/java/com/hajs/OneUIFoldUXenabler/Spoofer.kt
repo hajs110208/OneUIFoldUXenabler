@@ -16,7 +16,6 @@ class Spoofer : IXposedHookLoadPackage {
             val propHookString = object : XC_MethodHook() {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
-                    if (key == "ro.boot.other.locked") param.result = "0"
                 }
             }
             XposedHelpers.findAndHookMethod(systemPropertiesClass, "get", String::class.java, propHookString)
@@ -34,6 +33,7 @@ class Spoofer : IXposedHookLoadPackage {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
                     if (key == "SEC_FLOATING_FEATURE_LAUNCHER_SUPPORT_TASKBAR") param.result = true
+                    if (key == "SEC_FLOATING_FEATURE_SIP_CONFIG_FOLD_UX_VERSION") param.result = 81
                 }
             }
             try {
@@ -51,7 +51,6 @@ class Spoofer : IXposedHookLoadPackage {
             val semPropHookString = object : XC_MethodHook() {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
-                    if (key == "ro.boot.other.locked") param.result = "0"
                 }
             }
             XposedHelpers.findAndHookMethod(semSystemPropertiesClass, "get", String::class.java, semPropHookString)
