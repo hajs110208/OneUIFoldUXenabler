@@ -16,6 +16,7 @@ class Spoofer : IXposedHookLoadPackage {
             val propHookString = object : XC_MethodHook() {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
+                    if (key == "ro.build.characteristics") param.result = "tablet"
                 }
             }
             XposedHelpers.findAndHookMethod(systemPropertiesClass, "get", String::class.java, propHookString)
@@ -24,6 +25,7 @@ class Spoofer : IXposedHookLoadPackage {
             val propHookInt = object : XC_MethodHook() {
                 override fun afterHookedMethod(param: MethodHookParam) {
                     val key = param.args[0] as? String ?: return
+                    if (key == "ro.build.characteristics") param.result = "tablet"
                 }
             }
             XposedHelpers.findAndHookMethod(systemPropertiesClass, "getInt", String::class.java, Int::class.javaPrimitiveType, propHookInt)
